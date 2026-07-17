@@ -6,8 +6,38 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import './styles.css';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const app = document.querySelector('#root');
+app.innerHTML = `
+  <canvas id="webgl" aria-hidden="true"></canvas>
+  <canvas id="cursor-field" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"></div>
+  <main>
+    <section class="hero panel" data-scene="hero">
+      <p class="eyebrow reveal">Next-gen AI launch systems</p>
+      <h1 class="headline reveal">Fluid intelligence for extraordinary brands.</h1>
+      <p class="lede reveal">A premium cinematic reel experience blending WebGL, liquid chrome, glass interfaces, and precision motion for AI startups ready to feel inevitable.</p>
+      <a class="magnetic cta reveal" href="#contact">Build the impossible <span>↗</span></a>
+    </section>
+    <section class="services panel" data-scene="services">
+      <div class="section-copy"><p class="eyebrow">Services</p><h2>Floating glass systems, engineered for launch velocity.</h2></div>
+      <div class="cube-labels">${['AI Development','Website Design','SaaS Platforms','Brand Identity','Automation'].map((s,i)=>`<button class="magnetic glass-card" data-cube="${i}"><span>0${i+1}</span>${s}</button>`).join('')}</div>
+    </section>
+    <section class="showcase panel" data-scene="showcase">
+      <div class="section-copy"><p class="eyebrow">Museum exhibits</p><h2>Product stories presented as cinematic artifacts.</h2></div>
+      <div class="exhibit-list"><article>Neural CRM / autonomous pipeline</article><article>VisionOS analytics / real-time command</article><article>AI concierge / premium conversion</article></div>
+    </section>
+    <section class="proof panel" data-scene="proof">
+      <div class="stats"><div><strong data-count="240">0</strong><span>% launch lift</span></div><div><strong data-count="18">0</strong><span>weeks saved</span></div><div><strong data-count="99">0</strong><span>lighthouse aura</span></div></div>
+      <blockquote class="testimonial">“The interface feels like stepping inside our AI engine — precise, luxurious, and alive.”<cite>Founder, Series A SaaS</cite></blockquote>
+    </section>
+    <section class="process panel" data-scene="process"><p class="eyebrow">Pipeline</p><h2>Discover → Design → Develop → Launch</h2><p>Four levitating islands connected by pulsing energy splines and scroll-reactive camera parallax.</p></section>
+    <section class="footer panel" id="contact" data-scene="footer"><h2>Let's Build Something Extraordinary.</h2><a class="magnetic cta" href="mailto:hello@example.com">Start the signal</a></section>
+  </main>`;
 
 const canvas = document.querySelector('#webgl');
 const scene = new THREE.Scene();
